@@ -1,27 +1,29 @@
+"use client";
+
 import React, { useState } from 'react';
 import { auth } from '../firebase-config';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
-const LoginForm = () => {
+const LoginForm = ({ onLoginSuccess }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loginSuccess, setLoginSuccess] = useState(false);
-    const [loginError, setLoginError] = useState(null); // State for login error message
+    const [loginError, setLoginError] = useState(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
-            console.log(userCredential);
             const user = userCredential.user;
             localStorage.setItem('token', user.accessToken);
             localStorage.setItem('user', JSON.stringify(user));
             setLoginSuccess(true);
-            setLoginError(null); // Reset login error if previous attempt failed
+            setLoginError(null);
+            onLoginSuccess(); // Notify the parent component of successful login
         } catch (error) {
             console.error(error);
-            setLoginError(error.message); // Set login error message
-            setLoginSuccess(false); // Reset login success state
+            setLoginError(error.message);
+            setLoginSuccess(false);
         }
     };
 
@@ -45,7 +47,7 @@ const LoginForm = () => {
                 />
                 <button type="submit" className='login-button'>Login</button>
             </form>
-            {loginError && <div className="text-red-500">Error: {loginError}</div>} {/* Display login error message */}
+            {loginError && <div className="text-red-500">Error: {loginError}</div>}
             {loginSuccess && <div className="text-green-500">Login successful!</div>}
         </div>
     );
