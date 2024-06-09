@@ -6,13 +6,13 @@ import { getStorage } from 'firebase/storage';
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBHwutx_25w3ETdBC1xHhMJBoiat9_Yuu8",
-    authDomain: "portfolio-def03.firebaseapp.com",
-    projectId: "portfolio-def03",
-    storageBucket: "portfolio-def03.appspot.com",
-    messagingSenderId: "938647648218",
-    appId: "1:938647648218:web:bb739e24b6bc38d82d32e3",
-    measurementId: "G-ZKG3077J7S"
+    apiKey: "AIzaSyBSH2dTuKfThczsAB2_-TEWvWnl3Ooh-Ng",
+    authDomain: "waltons-b4f87.firebaseapp.com",
+    projectId: "waltons-b4f87",
+    storageBucket: "waltons-b4f87.appspot.com",
+    messagingSenderId: "455315002622",
+    appId: "1:455315002622:web:a1a2024352e89a349dc1af",
+    measurementId: "G-08K6RE971M"
 };
 
 // Initialize Firebase
@@ -22,4 +22,4 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
-export { auth, db, storage, };
+export { app, auth, db, storage, };
