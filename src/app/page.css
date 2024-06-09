@@ -1,0 +1,256 @@
+body {
+    margin: 30px 70px;
+  }
+  
+  .contact--icon {
+    padding-left: 80px;
+  }
+  
+  .navbar-icon {
+    max-height: 25px;
+  }
+  
+  .tech {
+    margin-top: 80px;
+  }
+  
+  .tech--text {
+    text-align: center;
+    padding-bottom: 80px;
+  }
+  
+  .tech--icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .icon--first--line {
+    display: flex;
+    gap: 80px;
+    align-items: center;
+    padding-bottom: 50px;
+  }
+  
+  .icon--second--line {
+    display: flex;
+    gap: 80px;
+    align-items: center;
+  }
+  
+  .tech--text p {
+    padding-top: 20px;
+  }
+  
+  
+  
+  .about {
+    text-align: center;
+    margin: 100px 400px;
+  }
+  
+  .about h1 {
+    padding-bottom: 20px;
+  }
+  
+  
+  .experince h1 {
+    text-align: center;
+    padding-bottom: 60px;
+  
+  }
+  
+  .experince p {
+    margin-left: 300px;
+    margin-right: 300px;
+    padding-bottom: 50px;
+  }
+  
+  .experince--two {
+    padding-top: 50px;
+  }
+  
+  .education {
+    margin-left: 300px;
+    margin-right: 300px;
+    margin-top: 100px;
+    text-align: center;
+  }
+  
+  .education h1 {
+    text-align: center;
+    padding-bottom: 60px;
+  }
+  
+  .first--line--expirence {
+    padding-bottom: 30px;
+  }
+  
+  .project {
+    margin-top: 100px;
+  }
+  
+  .footer--main {
+    margin-top: 200px;
+  }
+  
+  
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 300px;
+  }
+  
+  .footer--logo{
+    width: 100px;
+  }
+  
+  .footer--menu {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+  }
+  
+  .footer--menu ul {
+    display: flex;
+  }
+  
+  .footer--icon ul li {
+    padding-left: 10px;
+  }
+  
+  .footer--contact ul li {
+    padding-left: 50px;
+  }
+  
+  .sub--footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 30px;
+  }
+  
+  .sub--footer ul {
+    display: flex;
+    gap: 20px;
+  }
+  
+  
+  
+  /* New form card */
+  
+  
+  
+  .card{
+    display: flex;
+    justify-content: center;
+  
+  }
+  
+  .card-h1{
+    text-align: center;
+    margin-top: 100px;
+  }
+  
+  
+  .contact-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 50px 35px;
+    width: 550px;
+    min-height: 580px;
+    max-height: auto;
+    text-align: start;
+    margin-top: 70px;
+  }
+  
+  h2 {
+    color: #2E0249;
+    margin-bottom: 20px;
+  }
+  
+  .button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+  }
+  
+  .btn {
+   
+    border: 1px solid #d0d0d0;
+    border-radius: 5px;
+    color: #42446E;
+    padding: 10px 15px;
+    cursor: pointer;
+    flex-grow: 1;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    max-width: fit-content;
+  }
+  
+  .btn:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .selected {
+    background-color:#42446E;
+    color: #fff;
+  }
+  
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-top: 20px;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    border: none;
+    border-bottom: 1px solid #d0d0d0;
+    padding: 10px;
+    font-size: 14px;
+    color: #2E0249;
+    transition: border-color 0.3s ease;
+  }
+  
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    outline: none;
+    border-color: #2E0249;
+  }
+  
+  .submit-btn {
+    background-color:#42446E;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    max-width: 200px;
+   margin-top: 30PX;
+  }
+  
+  .submit-btn:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .send-icon {
+    margin-right: 5px;
+  }
+  
+  
+  .submit-btn-icon{
+    height: 20px;
+    padding-right: 10px;
+  }
+  
+  
