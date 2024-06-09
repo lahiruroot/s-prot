@@ -57,9 +57,9 @@ function Navbar() {
                                 <li><a href="#experience" className="block px-4 py-2 text-gray-600 hover:text-gray-800">Experience</a></li>
                                 <li><a href="#contact" className="block px-4 py-2 text-gray-600 hover:text-gray-800">Contact</a></li>
                                 <div className="grid gap-x-8 gap-y-4 grid-cols-3 pb-4">
-                                    <div><li><Image src={gitlogo} alt="Button 1" className="w-6 h-6" /></li></div>
-                                    <div><li><Image src={twitlogo} alt="Button 2" className="w-6 h-6" /></li></div>
-                                    <div><li><Image src={linkedinlogo} alt="Button 3" className="w-6 h-6" /></li></div>
+                                    <div><li><Image href="https://github.com/movinigamage" src={gitlogo} alt="Button 1" className="w-6 h-6" /></li></div>
+                                    <div><li><Image href="" src={twitlogo} alt="Button 2" className="w-6 h-6" /></li></div>
+                                    <div><li><Image href="https://www.linkedin.com/in/movini/" src={linkedinlogo} alt="Button 3" className="w-6 h-6" /></li></div>
                                 </div>
                             </ul>
                         </div>
