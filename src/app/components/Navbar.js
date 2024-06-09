@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { auth } from '../firebase-config';
+import { auth, db } from '../firebase-config';
 import { signOut } from 'firebase/auth';
+import { collection, getDocs, QuerySnapshot } from 'firebase/firestore'; // I
 import Image from "next/image";
 import logo from '../../../public/Movini.jpg'
 import gitlogo from '../../../public/Vector.jpg'
@@ -10,6 +11,7 @@ import twitlogo from '../../../public/twitter.jpg'
 import linkedinlogo from '../../../public/linked.jpg'
 import Hello from './Hello';
 import LoginForm from "./login";
+import Messages from './messages';
 
 function Navbar() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -46,6 +48,40 @@ function Navbar() {
         }
     };
 
+    //messagedialog
+    const [isMessageDialogOpen, setIsMessageDialogOpen] = useState(false); // State to manage dialog visibility
+    const handleMessagesClick = () => {
+        // Open dialog box when Messages link is clicked
+        setIsMessageDialogOpen(true);
+    };
+
+
+    //messagedialog
+
+    // messagecount
+    const [documentCount, setDocumentCount] = useState(0);
+
+    useEffect(() => {
+        const fetchDocumentCount = async () => {
+            try {
+                const querySnapshot = await getDocs(collection(db, 'formSubmissions'));
+                const count = querySnapshot.size;
+                setDocumentCount(count);
+            } catch (error) {
+                console.error('Error fetching document count:', error);
+            }
+        };
+
+        fetchDocumentCount();
+
+        return () => {
+            // Cleanup function
+        };
+    }, []);
+
+
+
+    // messagecount
     return (
         <div className="bg-white">
             <header className="absolute inset-x-0 top-0 z-50">
@@ -70,10 +106,14 @@ function Navbar() {
                                 <li><a href="#qualification" className="text-gray-600 hover:text-gray-800">Qualification</a></li>
                                 <li><a href="#experience" className="text-gray-600 hover:text-gray-800">Experience</a></li>
                                 <li><a href="#contact" className="text-gray-600 hover:text-gray-800">Contact</a></li>
-                                {!loggedIn && <li><a href="#login" className="text-gray-600 hover:text-gray-800" onClick={openDialog}>Admin</a></li>}
+                                {!loggedIn && <li><a href="#login" className="text-gray-600 hover:text-gray-800" onClick={openDialog}>Login</a></li>}
                                 {loggedIn && (
                                     <>
-                                        <li><a href="#messages" className="text-gray-600 hover:text-gray-800">Messages</a></li>
+                                        <li><a href="#messages" className="text-gray-600 hover:text-gray-800" onClick={handleMessagesClick}>Messages
+                                            <span class="relative inline-flex text-xs bg-red-500 text-white rounded-full py-1 px-2">
+                                                {documentCount.toString()}
+                                            </span>
+                                        </a></li>
                                         <li><a href="#" onClick={handleLogout} className="text-gray-600 hover:text-gray-800">Logout</a></li>
                                     </>
                                 )}
@@ -94,7 +134,7 @@ function Navbar() {
                                 <li><a href="#qualification" className="block px-4 py-2 text-gray-600 hover:text-gray-800">Qualification</a></li>
                                 <li><a href="#experience" className="block px-4 py-2 text-gray-600 hover:text-gray-800">Experience</a></li>
                                 <li><a href="#contact" className="block px-4 py-2 text-gray-600 hover:text-gray-800">Contact</a></li>
-                                {!loggedIn && <li><a href="#login" className="block px-4 py-2 text-gray-600 hover:text-gray-800" onClick={openDialog}>Admin</a></li>}
+                                {!loggedIn && <li><a href="#login" className="block px-4 py-2 text-gray-600 hover:text-gray-800" onClick={openDialog}>Login</a></li>}
                                 {loggedIn && <li><a href="#messages" className="block px-4 py-2 text-gray-600 hover:text-gray-800">Messages</a></li>}
                                 {loggedIn && <li><a href="#" onClick={handleLogout} className="block px-4 py-2 text-gray-600 hover:text-gray-800">Logout</a></li>}
                                 <div className="grid gap-x-8 gap-y-4 grid-cols-3 pb-4">
@@ -122,9 +162,30 @@ function Navbar() {
                                     </div>
                                 </div>
                                 <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                                    <button type="button" className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-pink-600 text-base font-medium text-white hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 sm:ml-3 sm:w-auto sm:text-sm" onClick={closeDialog}>
-                                        Close
-                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
+                {/* Dialog box */}
+                {isMessageDialogOpen && (
+                    <div className="fixed z-10 inset-0 overflow-y-auto">
+                        <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                            <div className="fixed inset-0 transition-opacity">
+                                <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
+                            </div>
+                            <span className="hidden sm:inline-block sm:align-middle sm:h-screen"></span>&#8203;
+                            <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                                <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                                    <div className="sm:flex sm:items-start">
+                                        <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                            {/* <LoginForm onLoginSuccess={() => { setLoggedIn(true); closeDialog(); }} /> */}
+                                            <Messages />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                                 </div>
                             </div>
                         </div>
@@ -139,3 +200,4 @@ function Navbar() {
 }
 
 export default Navbar;
+
